@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivshakti Gurukulam | प्रशिक्षण - संरक्षण - साहस</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Devanagari:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C8991A;
+    --gold-light: #E8B93A;
+    --gold-dark: #8B6914;
+    --saffron: #FF6B1A;
+    --saffron-light: #FF8C42;
+    --green-deep: #1A3A1A;
+    --green-mid: #2D5A27;
+    --green-accent: #4A8C3F;
+    --cream: #F5EDD8;
+    --cream-light: #FAF5EB;
+    --dark: #0D1A0D;
+    --text-dark: #1A1A0D;
+    --maroon: #8B1A1A;
+    --copper: #B87333;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Philosopher', 'Noto Sans Devanagari', serif;
+    background: var(--dark);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ─── PRELOADER / INTRO SPLASH ─── */
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  #preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  #intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Hide main content initially */
+  body.loading {
+    overflow: hidden;
+  }
+
+  body.loading #main-content {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  #main-content {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease 0.3s, visibility 0.8s ease 0.3s;
+  }
+
+  /* ─── TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8991A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: linear-gradient(180deg, rgba(13,26,13,0.98) 0%, rgba(13,26,13,0.92) 100%);
+    border-bottom: 1px solid rgba(200,153,26,0.3);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-emblem {
+    width: 48px;
+    height: 48px;
+    position: relative;
+  }
+
+  .logo-emblem img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain;
+  }
+
+  .logo-text .name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+  }
+
+  .logo-text .tagline {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.6rem;
+    color: var(--saffron);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 0.4rem 0.7rem;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+    transition: all 0.25s;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--gold); background: rgba(200,153,26,0.08); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--saffron), var(--gold)) !important;
+    color: var(--dark) !important;
+    padding: 0.45rem 1.2rem !important;
+    border-radius: 3px !important;
+    font-weight: 700 !important;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    transition: 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 70px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,153,26,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255,107,26,0.05) 0%, transparent 50%),
+      linear-gradient(180deg, var(--dark) 0%, #0A1F0A 50%, var(--dark) 100%);
+  }
+
+  /* Decorative diagonal lines */
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.06;
+  }
+
+  .hero-lines::before, .hero-lines::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 200%;
+    background: linear-gradient(180deg, transparent, var(--gold), transparent);
+    animation: lineDrift 8s ease-in-out infinite alternate;
+  }
+
+  .hero-lines::before { left: 30%; top: -50%; transform: rotate(15deg); }
+  .hero-lines::after { right: 30%; top: -50%; transform: rotate(-15deg); animation-delay: 2s; }
+
+  @keyframes lineDrift { from { opacity: 0.3; } to { opacity: 1; } }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 4rem 2rem;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(200,153,26,0.1);
+    border: 1px solid rgba(200,153,26,0.3);
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+  }
+
+  .hero-badge::before { content: '⚔'; font-size: 1rem; }
+
+  .hero-title-devanagari {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, var(--saffron) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-title-en {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 3vw, 1.8rem);
+    font-weight: 400;
+    color: rgba(245,237,216,0.6);
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .hero-divider::before, .hero-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+
+  .hero-divider::after { background: linear-gradient(270deg, transparent, var(--gold)); }
+
+  .hero-slogan {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--saffron-light);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+
+  .hero-desc {
+    max-width: 640px;
+    margin: 2rem auto;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(245,237,216,0.75);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.2rem;
+    background: linear-gradient(135deg, var(--saffron), var(--gold-dark));
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(255,107,26,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255,107,26,0.45);
+  }
+
+  .btn-outline {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover { background: rgba(200,153,26,0.1); }
+
+  /* ─── STATS STRIP ─── */
+  .stats-strip {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg, var(--green-deep), #0F2A0F, var(--green-deep));
+    border-top: 1px solid rgba(200,153,26,0.2);
+    border-bottom: 1px solid rgba(200,153,26,0.2);
+    padding: 2rem 0;
+  }
+
+  .stats-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .stat-item { padding: 1rem; }
+
+  .stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(245,237,216,0.6);
+    margin-top: 0.4rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section { position: relative; z-index: 1; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title-marathi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(200,153,26,0.6);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    margin: 0 auto;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-pad { padding: 6rem 0; }
+
+  /* ─── ABOUT ─── */
+  .about { background: linear-gradient(180deg, var(--dark) 0%, #0A1A0A 100%); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-emblem-wrap {
+    width: 340px;
+    height: 340px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .about-emblem-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 40px rgba(200,153,26,0.3));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+  .about-ring {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,153,26,0.15);
+    animation: spin 20s linear infinite;
+  }
+
+  .about-ring::after {
+    content: '⚔';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .about-content h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .about-content .sub {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: var(--saffron);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content p {
+    color: rgba(245,237,216,0.78);
+    line-height: 1.95;
+    margin-bottom: 1.2rem;
+    font-size: 0.97rem;
+  }
+
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  .pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.8rem;
+    background: rgba(200,153,26,0.06);
+    border: 1px solid rgba(200,153,26,0.15);
+    border-radius: 4px;
+  }
+
+  .pillar-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .pillar-text .t { font-weight: 700; color: var(--gold-light); font-size: 0.85rem; }
+  .pillar-text .d { font-size: 0.75rem; color: rgba(245,237,216,0.55); margin-top: 0.15rem; }
+
+  /* ─── TRAINING ─── */
+  .training {
+    background: linear-gradient(180deg, #0A1A0A 0%, #071407 50%, #0A1A0A 100%);
+  }
+
+  .training-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .training-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(26,58,26,0.6) 0%, rgba(13,26,13,0.8) 100%);
+    border: 1px solid rgba(200,153,26,0.18);
+    border-radius: 6px;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+    transition: all 0.35s;
+    cursor: pointer;
+  }
+
+  .training-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--saffron), var(--gold));
+    transform: scaleY(0);
+    transition: transform 0.35s;
+    transform-origin: bottom;
+  }
+
+  .training-card:hover { transform: translateY(-4px); border-color: rgba(200,153,26,0.4); }
+  .training-card:hover::before { transform: scaleY(1); }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(255,107,26,0.4));
+  }
+
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .card-marathi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.85rem;
+    color: var(--saffron);
+    margin-bottom: 0.8rem;
+  }
+
+  .card-desc {
+    font-size: 0.84rem;
+    color: rgba(245,237,216,0.6);
+    line-height: 1.7;
+  }
+
+  /* ─── WOMEN EMPOWERMENT ─── */
+  .women-section {
+    background: linear-gradient(135deg, #0D0A18 0%, #1A0A0A 50%, #0A1A0A 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .women-section::before {
+    content: '🔱';
+    position: absolute;
+    font-size: 30rem;
+    opacity: 0.02;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+
+  .women-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .women-content h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .women-content .sub {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: var(--saffron);
+    margin-bottom: 1.5rem;
+  }
+
+  .women-content p {
+    color: rgba(245,237,216,0.78);
+    line-height: 1.95;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+
+  .women-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .w-feat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: rgba(139,26,26,0.15);
+    border: 1px solid rgba(200,153,26,0.15);
+    border-radius: 4px;
+  }
+
+  .w-feat-icon { font-size: 1.5rem; }
+  .w-feat-title { font-weight: 700; color: var(--gold-light); font-size: 0.9rem; }
+  .w-feat-sub { font-size: 0.78rem; color: rgba(245,237,216,0.55); }
+
+  .women-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .women-card-stack {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .w-card {
+    background: linear-gradient(135deg, rgba(45,90,39,0.4), rgba(26,58,26,0.6));
+    border: 1px solid rgba(200,153,26,0.2);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    transition: transform 0.3s;
+  }
+
+  .w-card:hover { transform: translateX(8px); }
+  .w-card-num { font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 900; color: rgba(200,153,26,0.3); }
+  .w-card-info .t { font-weight: 700; color: var(--gold); font-size: 0.95rem; }
+  .w-card-info .d { font-size: 0.8rem; color: rgba(245,237,216,0.55); margin-top: 0.2rem; }
+
+  /* ─── JOIN FORM ─── */
+  .join-section {
+    background: linear-gradient(180deg, #071407 0%, var(--dark) 100%);
+  }
+
+  .join-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .join-info h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .join-info .sub {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: var(--saffron);
+    margin-bottom: 1.5rem;
+  }
+
+  .join-info p {
+    color: rgba(245,237,216,0.7);
+    line-height: 1.9;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .join-benefits { list-style: none; }
+  .join-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0;
+    color: rgba(245,237,216,0.75);
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(200,153,26,0.08);
+  }
+  .join-benefits li::before { content: '⚔'; color: var(--saffron); font-size: 0.8rem; }
+
+  .form-card {
+    background: linear-gradient(135deg, rgba(26,58,26,0.5), rgba(13,26,13,0.7));
+    border: 1px solid rgba(200,153,26,0.2);
+    border-radius: 8px;
+    padding: 2.5rem;
+  }
+
+  .form-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .form-group input, .form-group select, .form-group textarea {
+    background: rgba(13,26,13,0.8);
+    border: 1px solid rgba(200,153,26,0.25);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    color: var(--cream);
+    font-family: 'Philosopher', serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.25s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    background: rgba(13,26,13,0.95);
+  }
+
+  .form-group select option { background: var(--dark); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .upload-area {
+    border: 1px dashed rgba(200,153,26,0.3);
+    border-radius: 4px;
+    padding: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(13,26,13,0.4);
+  }
+
+  .upload-area:hover { border-color: var(--gold); background: rgba(200,153,26,0.05); }
+  .upload-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+  .upload-text { font-size: 0.8rem; color: rgba(245,237,216,0.5); }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--saffron), var(--gold-dark));
+    border: none;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(255,107,26,0.25);
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255,107,26,0.4);
+  }
+
+  /* ─── GALLERY ─── */
+  .gallery { background: linear-gradient(180deg, var(--dark) 0%, #0A1A0A 100%); }
+
+  .gallery-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 220px);
+    gap: 0.8rem;
+  }
+
+  .gallery-cell {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(26,58,26,0.4);
+    border: 1px solid rgba(200,153,26,0.1);
+    cursor: pointer;
+    transition: all 0.35s;
+  }
+
+  .gallery-cell:hover { border-color: rgba(200,153,26,0.4); }
+
+  .gallery-cell.span2 { grid-column: span 2; }
+  .gallery-cell.span-row { grid-row: span 2; }
+
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: rgba(200,153,26,0.2);
+    gap: 0.5rem;
+  }
+
+  .gallery-placeholder span {
+    font-size: 0.75rem;
+    color: rgba(245,237,216,0.2);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(13,26,13,0.8) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+
+  .gallery-cell:hover .gallery-overlay { opacity: 1; }
+  .gallery-caption { font-size: 0.8rem; color: var(--gold); font-family: 'Cinzel', serif; }
+
+  /* ─── GALLERY MODAL ─── */
+  .gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13,26,13,0.95);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+  }
+
+  .gallery-modal-content {
+    position: relative;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1400px;
+    width: 90%;
+  }
+
+  .gallery-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    color: var(--gold);
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 2001;
+  }
+
+  .gallery-modal-close:hover { color: var(--saffron); }
+
+  .gallery-modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+  }
+
+  .gallery-modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .gallery-modal-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(200,153,26,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .gallery-modal-img:hover {
+    transform: scale(1.05);
+    border-color: var(--gold);
+    box-shadow: 0 8px 30px rgba(200,153,26,0.4);
+  }
+
+  @media (max-width: 768px) {
+    .gallery-modal-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    background: linear-gradient(180deg, #0A1A0A 0%, var(--dark) 100%);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-info .sub {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: var(--saffron);
+    margin-bottom: 2rem;
+  }
+
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .c-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(26,58,26,0.3);
+    border: 1px solid rgba(200,153,26,0.12);
+    border-radius: 4px;
+  }
+
+  .c-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold-dark));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .c-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245,237,216,0.4); }
+  .c-val { font-size: 0.92rem; color: var(--cream); margin-top: 0.2rem; }
+
+  .social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: rgba(26,58,26,0.4);
+    border: 1px solid rgba(200,153,26,0.2);
+    border-radius: 4px;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: all 0.3s;
+  }
+
+  .social-btn:hover { background: rgba(200,153,26,0.1); border-color: var(--gold); color: var(--gold); }
+
+  .map-placeholder {
+    background: rgba(26,58,26,0.3);
+    border: 1px solid rgba(200,153,26,0.15);
+    border-radius: 8px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(20%) brightness(0.9);
+  }
+
+  .map-placeholder p {
+    font-size: 0.85rem;
+    color: rgba(245,237,216,0.3);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #040D04;
+    border-top: 1px solid rgba(200,153,26,0.2);
+    padding: 3rem 0 1.5rem;
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-brand .marathi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.85rem;
+    color: var(--saffron);
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: rgba(245,237,216,0.45);
+    line-height: 1.8;
+  }
+
+  .footer-col h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a {
+    color: rgba(245,237,216,0.5);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.25s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(200,153,26,0.1);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.78rem;
+    color: rgba(245,237,216,0.3);
+  }
+
+  .footer-bottom .credits {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(200,153,26,0.4);
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 1024px) {
+    .training-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .nav-links.mobile-open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: rgba(13,26,13,0.99);
+      padding: 1.5rem;
+      gap: 0.2rem;
+      border-bottom: 1px solid rgba(200,153,26,0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-links.mobile-open a {
+      display: block;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid rgba(200,153,26,0.08);
+    }
+
+    .about-grid,
+    .women-grid,
+    .join-wrap,
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-emblem-wrap { width: 240px; height: 240px; }
+
+    .training-grid { grid-template-columns: 1fr; }
+
+    .gallery-mosaic {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+
+    .gallery-cell.span2, .gallery-cell.span-row { grid-column: auto; grid-row: auto; }
+
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .section-pad { padding: 4rem 0; }
+
+    .hero-content { padding: 2rem 1.5rem; }
+
+    .about-pillars { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .stat-num { font-size: 1.8rem; }
+    .gallery-mosaic { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .social-links { flex-wrap: wrap; }
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── ACTIVE NAV HIGHLIGHT ─── */
+  .nav-links a.active { color: var(--gold); }
+</style>
+</head>
+<body class="loading">
+
+<!-- ════════════ PRELOADER / INTRO SPLASH ════════════ -->
+<div id="preloader">
+  <video id="intro-video" autoplay muted playsinline>
+    <source src="Shivshakti-intro (1).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<!-- ════════════ MAIN CONTENT ════════════ -->
+<div id="main-content">
+
+<!-- ════════════ NAV ════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="logo-emblem">
+        <img src="Shivshakti-logo.png" alt="Shivshakti Gurukulam Logo">
+      </div>
+      <div class="logo-text">
+        <div class="name">Shivshakti Gurukulam</div>
+        <div class="tagline">प्रशिक्षण • संरक्षण • साहस</div>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#training">Training</a></li>
+      <li><a href="#women">Women</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#join" class="nav-cta">Join Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Shivshakti Gurukulam Foundation</div>
+    <h1 class="hero-title-devanagari" data-key="hero-title">शिवशक्ती गुरुकुलम्</h1>
+    <p class="hero-title-en">Shivshakti Gurukulam</p>
+    <div class="hero-divider">
+      <span class="hero-slogan" data-key="hero-slogan">शौर्य • संस्कार • स्वसंरक्षण</span>
+    </div>
+    <p class="hero-desc" data-key="hero-desc">
+      A sacred institution rooted in ancient Indian martial traditions, empowering youth and women with courage, discipline, and the warrior spirit of Chhatrapati Shivaji Maharaj.
+    </p>
+    <div class="hero-actions">
+      <a href="#join" class="btn-primary" data-key="join-now">⚔ Join Gurukulam</a>
+      <a href="#training" class="btn-outline" data-key="explore">Explore Training</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ STATS ════════════ -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num">50,000+</span>
+      <div class="stat-label" data-key="stat1">Students Trained</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-num">8+</span>
+      <div class="stat-label" data-key="stat2">Disciplines</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-num">10+</span>
+      <div class="stat-label" data-key="stat3">Years of Legacy</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <span class="stat-num">100%</span>
+      <div class="stat-label" data-key="stat4">Women Welcome</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ ABOUT ════════════ -->
+<section class="about section-pad" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-emblem-wrap">
+          <div class="about-ring"></div>
+          <img src="Shivshakti-logo.png" alt="Shivshakti Gurukulam Logo">
+        </div>
+      </div>
+      <div class="about-content reveal reveal-delay-1">
+        <span class="section-eyebrow" data-key="about-eyebrow">Our Story</span>
+        <h2 data-key="about-title">Shivshakti Gurukulam</h2>
+        <p class="sub" data-key="about-sub">शिवशक्ती गुरुकुलम् — प्राचीन परंपरा, आधुनिक दृष्टी</p>
+        <p data-key="about-p1">Shivshakti Gurukulam is a training centre dedicated to preserving ancient Indian martial arts, Akhada culture, and holistic physical-mental development.</p>
+        <p data-key="about-p2">Drawing inspiration from the valour of Chhatrapati Shivaji Maharaj, we instil courage, discipline, and patriotism in the youth — especially empowering women to reclaim their strength.</p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <span class="pillar-icon">⚔️</span>
+            <div class="pillar-text">
+              <div class="t" data-key="p1t">Martial Arts</div>
+              <div class="d" data-key="p1d">Ancient Indian battle traditions</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🧘</span>
+            <div class="pillar-text">
+              <div class="t" data-key="p2t">Yoga & Wellness</div>
+              <div class="d" data-key="p2d">Mind-body balance</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🛡️</span>
+            <div class="pillar-text">
+              <div class="t" data-key="p3t">Self Defence</div>
+              <div class="d" data-key="p3d">Practical protection skills</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🏔️</span>
+            <div class="pillar-text">
+              <div class="t" data-key="p4t">Trekking & Adventure</div>
+              <div class="d" data-key="p4d">Outdoor courage building</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TRAINING ════════════ -->
+<section class="training section-pad" id="training">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow" data-key="training-eyebrow">Our Programs</span>
+      <h2 class="section-title" data-key="training-title">Training Disciplines</h2>
+      <p class="section-title-marathi" data-key="training-sub">प्रशिक्षण कार्यक्रम</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="training-grid">
+      <div class="training-card reveal">
+        <span class="card-icon">⚔️</span>
+        <div class="card-title" data-key="t1">Talwarbaazi</div>
+        <div class="card-marathi">तलवारबाजी</div>
+        <p class="card-desc" data-key="t1d">The art of the sword — rooted in Maratha warrior tradition. Students learn classical sword forms, combat footwork, and the philosophy of the blade.</p>
+      </div>
+      <div class="training-card reveal reveal-delay-1">
+        <span class="card-icon">🪃</span>
+        <div class="card-title" data-key="t2">Dandpatta</div>
+        <div class="card-marathi">दांडपट्टा</div>
+        <p class="card-desc" data-key="t2d">The legendary gauntlet sword of the Marathas. An intensely dynamic discipline requiring strength, agility, and body coordination.</p>
+      </div>
+      <div class="training-card reveal reveal-delay-2">
+        <span class="card-icon">🏹</span>
+        <div class="card-title" data-key="t3">Bhala / स्पेअर</div>
+        <div class="card-marathi">भाला प्रशिक्षण</div>
+        <p class="card-desc" data-key="t3d">Ancient spear fighting techniques that develop reach, balance, and explosive power. One of the oldest martial disciplines in India.</p>
+      </div>
+      <div class="training-card reveal">
+        <span class="card-icon">🏹</span>
+        <div class="card-title" data-key="t4">Bana</div>
+        <div class="card-marathi">बाण</div>
+        <p class="card-desc" data-key="t4d">The ancient art of archery. Master precision, focus, and the warrior's discipline through traditional bow and arrow training.</p>
+      </div>
+      <div class="training-card reveal reveal-delay-1">
+        <span class="card-icon">💫</span>
+        <div class="card-title" data-key="t5">Chakra Vidya</div>
+        <div class="card-marathi">चक्र युद्धकला</div>
+        <p class="card-desc" data-key="t5d">The rare and ancient art of the war-disc. Precision, spin mechanics, and target training in this almost-lost Indian martial form.</p>
+      </div>
+      <div class="training-card reveal reveal-delay-2">
+        <span class="card-icon">🪵</span>
+        <div class="card-title" data-key="t6">Lathi-Kathi</div>
+        <div class="card-marathi">लाठी-काठी</div>
+        <p class="card-desc" data-key="t6d">Staff combat — the martial art of the common warrior. Develops coordination, speed, and endurance through rhythmic stick forms.</p>
+      </div>
+      <div class="training-card reveal">
+        <span class="card-icon">🧘</span>
+        <div class="card-title" data-key="t7">Yoga</div>
+        <div class="card-marathi">योग</div>
+        <p class="card-desc" data-key="t7d">Foundation of all martial arts. Traditional Yoga, Pranayama, and Surya Namaskar to build the warrior's body and calm mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ WOMEN EMPOWERMENT ════════════ -->
+<section class="women-section section-pad" id="women">
+  <div class="container">
+    <div class="women-grid">
+      <div class="women-content reveal">
+        <span class="section-eyebrow" data-key="women-eyebrow">Women Empowerment</span>
+        <h2 data-key="women-title">Shakti — The Warrior Woman</h2>
+        <p class="sub" data-key="women-sub">महिला सशक्तीकरण — शक्ती, साहस, स्वावलंबन</p>
+        <p data-key="women-p1">At Shivshakti Gurukulam, women are not just welcome — they are at the centre of our mission. We believe every woman carries the spirit of Jijabai and Lakshmibai within her.</p>
+        <p data-key="women-p2">Our women's programs go beyond physical training — they build unshakeable confidence, situational awareness, and the will to stand up for oneself and others.</p>
+        <div class="women-features">
+          <div class="w-feat">
+            <span class="w-feat-icon">🛡️</span>
+            <div>
+              <div class="w-feat-title" data-key="wf1">Self Defence Training</div>
+              <div class="w-feat-sub" data-key="wf1d">Practical skills for real-world safety — krav maga inspired and rooted in Indian traditions</div>
+            </div>
+          </div>
+          <div class="w-feat">
+            <span class="w-feat-icon">🏔️</span>
+            <div>
+              <div class="w-feat-title" data-key="wf2">Trekking & Adventure</div>
+              <div class="w-feat-sub" data-key="wf2d">Organized treks to Sahyadri forts — exploring history while building endurance</div>
+            </div>
+          </div>
+          <div class="w-feat">
+            <span class="w-feat-icon">⚔️</span>
+            <div>
+              <div class="w-feat-title" data-key="wf3">Martial Arts for Women</div>
+              <div class="w-feat-sub" data-key="wf3d">Tailored sword, staff, and combat programs specifically designed for women</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="women-visual reveal reveal-delay-1">
+        <div class="women-card-stack">
+          <div class="w-card">
+            <div class="w-card-num">01</div>
+            <div class="w-card-info">
+              <div class="t" data-key="wc1">Physical Strength</div>
+              <div class="d" data-key="wc1d">Build stamina, flexibility and warrior-grade fitness</div>
+            </div>
+          </div>
+          <div class="w-card">
+            <div class="w-card-num">02</div>
+            <div class="w-card-info">
+              <div class="t" data-key="wc2">Mental Resilience</div>
+              <div class="d" data-key="wc2d">Meditation, focus and the indomitable warrior mindset</div>
+            </div>
+          </div>
+          <div class="w-card">
+            <div class="w-card-num">03</div>
+            <div class="w-card-info">
+              <div class="t" data-key="wc3">Community & Sisterhood</div>
+              <div class="d" data-key="wc3d">Train with hundreds of like-minded empowered women</div>
+            </div>
+          </div>
+          <div class="w-card">
+            <div class="w-card-num">04</div>
+            <div class="w-card-info">
+              <div class="t" data-key="wc4">Cultural Pride</div>
+              <div class="d" data-key="wc4d">Connect with the rich legacy of Indian warrior women</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GALLERY ════════════ -->
+<section class="gallery section-pad" id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow" data-key="gallery-eyebrow">Our Journey</span>
+      <h2 class="section-title" data-key="gallery-title">Gallery</h2>
+      <p class="section-title-marathi">गॅलरी — कार्यक्रम, स्पर्धा, प्रशिक्षण</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="gallery-mosaic reveal">
+      <!-- Talwarbaazi - spans 2 columns -->
+      <div class="gallery-cell span2" onclick="openGalleryModal('Talwarbaazi')">
+        <img src="gallery-asset/Talwarbaazi/TB 1.jpeg" alt="Talwarbaazi" style="width:100%; height:100%; object-fit:cover;">
+        <div class="gallery-overlay"><span class="gallery-caption">⚔️ Talwarbaazi — Sword Training</span></div>
+      </div>
+      
+      <!-- Dandpatta -->
+      <div class="gallery-cell" onclick="openGalleryModal('Dandpatta')">
+        <img src="gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.19.10 PM.jpeg" alt="Dandpatta" style="width:100%; height:100%; object-fit:cover;">
+        <div class="gallery-overlay"><span class="gallery-caption">🪃 Dandpatta — Gauntlet Sword</span></div>
+      </div>
+      
+      <!-- Bhala -->
+      <div class="gallery-cell" onclick="openGalleryModal('Bhala')">
+        <img src="gallery-asset/Bhala/WhatsApp Image 2026-03-18 at 9.19.07 PM.jpeg" alt="Bhala" style="width:100%; height:100%; object-fit:cover;">
+        <div class="gallery-overlay"><span class="gallery-caption">🏹 Bhala — Spear Training</span></div>
+      </div>
+      
+      <!-- Bana -->
+      <div class="gallery-cell" onclick="openGalleryModal('Bana')">
+        <img src="gallery-asset/Bana/Bana 1.jpeg" alt="Bana" style="width:100%; height:100%; object-fit:cover;">
+        <div class="gallery-overlay"><span class="gallery-caption">🏹 Bana — Archery</span></div>
+      </div>
+      
+      <!-- Lathi-Kathi -->
+      <div class="gallery-cell" onclick="openGalleryModal('Lathi-Kathi')">
+        <img src="gallery-asset/Lathi-Kathi/L-K.jpeg" alt="Lathi-Kathi" style="width:100%; height:100%; object-fit:cover;">
+        <div class="gallery-overlay"><span class="gallery-caption">🪵 Lathi-Kathi — Staff Combat</span></div>
+      </div>
+      
+      <!-- Yoga -->
+      <div class="gallery-cell" onclick="openGalleryModal('Yoga')">
+        <img src="gallery-asset/Yoga/Y1.jpeg" alt="Yoga" style="width:100%; height:100%; object-fit:cover;">
+        <div class="gallery-overlay"><span class="gallery-caption">🧘 Yoga — Mind & Body</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GALLERY MODAL ════════════ -->
+<div id="galleryModal" class="gallery-modal">
+  <div class="gallery-modal-content">
+    <span class="gallery-modal-close" onclick="closeGalleryModal()">&times;</span>
+    <h2 id="galleryModalTitle" class="gallery-modal-title"></h2>
+    <div class="gallery-modal-grid" id="galleryModalGrid"></div>
+  </div>
+</div>
+
+<!-- ════════════ JOIN ════════════ -->
+<section class="join-section section-pad" id="join">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow" data-key="join-eyebrow">Become a Warrior</span>
+      <h2 class="section-title" data-key="join-title">Join Shivshakti Gurukulam</h2>
+      <p class="section-title-marathi">प्रवेश नोंदणी — शिवशक्ती गुरुकुलम्</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="join-wrap">
+      <div class="join-info reveal">
+        <h2 data-key="ji-title">Begin Your Warrior Journey</h2>
+        <p class="sub" data-key="ji-sub">योद्ध्याची वाट सुरू करा</p>
+        <p data-key="ji-p">Open to all ages, all genders. No prior experience required — only the will to grow, discipline to show up, and courage to begin.</p>
+        <ul class="join-benefits">
+          <li data-key="jb1">Expert certified instructors</li>
+          <li data-key="jb2">Traditional & modern training methods</li>
+          <li data-key="jb3">Safe, inclusive environment for women</li>
+          <li data-key="jb4">Morning & evening batch options</li>
+          <li data-key="jb5">Annual competitions & cultural events</li>
+          <li data-key="jb6">Trekking expeditions to historic Maratha forts</li>
+        </ul>
+      </div>
+      <div class="form-card reveal reveal-delay-1">
+        <h3 class="form-title" data-key="form-title">⚔ Registration Form</h3>
+        <form action="https://formspree.io/f/mgonldog" method="POST" enctype="multipart/form-data" id="registrationForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label data-key="fl-name">Full Name</label>
+              <input type="text" name="fullName" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label data-key="fl-age">Age</label>
+              <input type="number" name="age" placeholder="Your age" min="6" max="80" required>
+            </div>
+            <div class="form-group">
+              <label data-key="fl-phone">Mobile Number</label>
+              <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+            <div class="form-group">
+              <label data-key="fl-email">Email</label>
+              <input type="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label data-key="fl-gender">Gender</label>
+              <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-key="fl-program">Interested Program</label>
+              <select name="program" required>
+                <option value="">Select Program</option>
+                <option>Talwarbaazi</option>
+                <option>Dandpatta</option>
+                <option>Bhala / स्पेअर</option>
+                <option>Bana</option>
+                <option>Chakra Vidya</option>
+                <option>Lathi-Kathi</option>
+                <option>Yoga</option>
+                <option>Self Defence</option>
+                <option>All Programs</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label data-key="fl-address">Address</label>
+              <textarea name="address" placeholder="Your full address" required></textarea>
+            </div>
+            <div class="form-group full">
+              <label data-key="fl-photo">Upload Photo</label>
+              <div class="upload-area" onclick="document.getElementById('photoUpload').click()">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text" data-key="upload-text">Click to upload your photo (JPG, PNG)</div>
+                <input type="file" name="photo" id="photoUpload" accept="image/*" style="display:none">
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn" data-key="submit-btn">⚔ Join Shivshakti Gurukulam</button>
+          <div id="formStatus" style="margin-top: 1rem; text-align: center; display: none;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CONTACT ════════════ -->
+<section class="contact section-pad" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow" data-key="contact-eyebrow">Get In Touch</span>
+      <h2 class="section-title" data-key="contact-title">Contact Us</h2>
+      <p class="section-title-marathi">संपर्क करा</p>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h2 data-key="ct-title">Reach Us</h2>
+        <p class="sub" data-key="ct-sub">आम्हाला संपर्क करा</p>
+        <div class="contact-items">
+          <div class="c-item">
+            <div class="c-icon">📞</div>
+            <div>
+              <div class="c-label" data-key="c-phone">Phone</div>
+              <div class="c-val">+91 9552522522</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📧</div>
+            <div>
+              <div class="c-label" data-key="c-email">Email</div>
+              <div class="c-val">gurukulamshivshakti@gmail.com</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">📍</div>
+            <div>
+              <div class="c-label" data-key="c-address">Address</div>
+              <div class="c-val">Nagpur, Maharashtra, India</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon">🏢</div>
+            <div>
+              <div class="c-label" data-key="c-branches">Our Branches</div>
+              <div class="c-val" style="line-height: 1.8;">
+                • Dighori Branch<br>
+                • Nandanvan Branch<br>
+                • Gulmohar Nagar, Pardi Branch<br>
+                • Binaki Mangalwari, Jamdarwadi Branch<br>
+                • Bhagwan Nagar, Omkar Nagar Branch<br>
+                • Jayprakash Nagar Branch<br>
+                • Fetri Branch
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-btn">📸 Instagram</a>
+          <a href="#" class="social-btn">👍 Facebook</a>
+          <a href="#" class="social-btn">▶️ YouTube</a>
+        </div>
+      </div>
+      <div class="map-placeholder reveal reveal-delay-1">
+        <div id="branchMap" style="width: 100%; height: 100%;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name">Shivshakti Gurukulam</div>
+        <div class="marathi">शिवशक्ती गुरुकुलम्</div>
+        <p>A foundation dedicated to preserving ancient Indian martial arts and empowering the next generation of warriors — especially women.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-key="fc1">Programs</h4>
+        <ul>
+          <li><a href="#">Talwarbaazi</a></li>
+          <li><a href="#">Dandpatta</a></li>
+          <li><a href="#">Bhala / स्पेअर</a></li>
+          <li><a href="#">Bana</a></li>
+          <li><a href="#">Chakra Vidya</a></li>
+          <li><a href="#">Lathi-Kathi</a></li>
+          <li><a href="#">Yoga</a></li>
+          <li><a href="#">Self Defence</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-key="fc2">Foundation</h4>
+        <ul>
+          <li><a href="#about" data-key="fc2-1">About Us</a></li>
+          <li><a href="#" data-key="fc2-2">Our Team</a></li>
+          <li><a href="#" data-key="fc2-3">Achievements</a></li>
+          <li><a href="#" data-key="fc2-4">Blog</a></li>
+          <li><a href="#contact" data-key="fc2-5">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-key="fc3">Follow Us</h4>
+        <ul>
+          <li><a href="#">📸 Instagram</a></li>
+          <li><a href="#">👍 Facebook</a></li>
+          <li><a href="#">▶️ YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Shivshakti Gurukulam Foundation. All rights reserved.</p>
+      <p class="credits">जय शिवाजी • जय भवानी</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── MOBILE MENU ───
+function toggleMenu() {
+  const links = document.getElementById('navLinks');
+  links.classList.toggle('mobile-open');
+}
+
+// Close on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('mobile-open');
+  });
+});
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── ACTIVE NAV ───
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+});
+
+// ─── FORM SUBMISSION HANDLER ───
+const form = document.getElementById('registrationForm');
+const formStatus = document.getElementById('formStatus');
+
+if (form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ Submitting...';
+    formStatus.style.display = 'none';
+    
+    try {
+      const formData = new FormData(form);
+      
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        formStatus.style.display = 'block';
+        formStatus.style.color = 'var(--gold)';
+        formStatus.innerHTML = '✅ Registration successful! We will contact you soon.';
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      formStatus.style.display = 'block';
+      formStatus.style.color = 'var(--saffron)';
+      formStatus.innerHTML = '❌ Something went wrong. Please try again or contact us directly.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
+  });
+}
+
+// ─── SMOOTH SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ─── GOOGLE MAPS - BRANCH LOCATIONS ───
+function initMap() {
+  // Branch locations with coordinates
+  const branches = [
+    {
+      name: 'Dighori Branch',
+      position: { lat: 21.119556370520215, lng: 79.14165109999999 }
+    },
+    {
+      name: 'Nandanvan Branch',
+      position: { lat: 21.13694414741825, lng: 79.12170827116445 }
+    },
+    {
+      name: 'Gulmohar Nagar, Pardi Branch',
+      position: { lat: 21.159763109559584, lng: 79.15048427116444 }
+    },
+    {
+      name: 'Binaki Mangalwari, Jamdarwadi Branch',
+      position: { lat: 21.167826067879066, lng: 79.12276745767271 }
+    },
+    {
+      name: 'Bhagwan Nagar, Omkar Nagar Branch',
+      position: { lat: 21.111150801508103, lng: 79.09574477116445 }
+    },
+    {
+      name: 'Jayprakash Nagar Branch',
+      position: { lat: 21.103788194397655, lng: 79.06702572883555 }
+    },
+    {
+      name: 'Fetri Branch',
+      position: { lat: 21.203819052447603, lng: 78.98771635582229 }
+    }
+  ];
+
+  // Create map centered on Nagpur
+  const map = new google.maps.Map(document.getElementById('branchMap'), {
+    zoom: 11,
+    center: { lat: 21.1458, lng: 79.0882 }, // Nagpur center
+    styles: [
+      {
+        featureType: 'all',
+        elementType: 'geometry',
+        stylers: [{ saturation: -20 }]
+      }
+    ]
+  });
+
+  // Create bounds to fit all markers
+  const bounds = new google.maps.LatLngBounds();
+
+  // Add markers for each branch
+  branches.forEach((branch, index) => {
+    // Create marker overlay with circular brown background
+    class CustomMarker extends google.maps.OverlayView {
+      constructor(position, map, branch) {
+        super();
+        this.position = position;
+        this.branch = branch;
+        this.div = null;
+        this.setMap(map);
+      }
+
+      onAdd() {
+        const div = document.createElement('div');
+        div.style.cssText = `
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          background-color: #8B4513;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+          border: 2px solid #C8991A;
+          cursor: pointer;
+          transform: translate(-50%, -50%);
+        `;
+        
+        const logoImg = document.createElement('img');
+        logoImg.src = 'Shivshakti-logo.png';
+        logoImg.style.cssText = `
+          width: 35px;
+          height: 35px;
+          object-fit: contain;
+        `;
+        
+        div.appendChild(logoImg);
+        this.div = div;
+
+        const panes = this.getPanes();
+        panes.overlayMouseTarget.appendChild(div);
+
+        // Add click listener
+        div.addEventListener('click', () => {
+          const infoWindow = new google.maps.InfoWindow({
+            content: `
+              <div style="padding: 10px; font-family: 'Philosopher', sans-serif;">
+                <h3 style="margin: 0 0 5px 0; color: #C8991A; font-size: 16px; font-weight: 700;">
+                  ⚔ ${this.branch.name}
+                </h3>
+                <p style="margin: 0; color: #333; font-size: 13px;">
+                  Shivshakti Gurukulam
+                </p>
+                <p style="margin: 5px 0 0 0; color: #666; font-size: 12px;">
+                  Nagpur, Maharashtra
+                </p>
+              </div>
+            `,
+            position: this.position
+          });
+          infoWindow.open(map);
+        });
+      }
+
+      draw() {
+        const overlayProjection = this.getProjection();
+        const pos = overlayProjection.fromLatLngToDivPixel(this.position);
+        if (this.div) {
+          this.div.style.left = pos.x + 'px';
+          this.div.style.top = pos.y + 'px';
+        }
+      }
+
+      onRemove() {
+        if (this.div) {
+          this.div.parentNode.removeChild(this.div);
+          this.div = null;
+        }
+      }
+    }
+
+    // Create custom marker
+    new CustomMarker(branch.position, map, branch);
+
+    // Extend bounds to include this marker
+    bounds.extend(branch.position);
+  });
+
+  // Fit map to show all markers
+  map.fitBounds(bounds);
+
+  // Add some padding to the bounds
+  const padding = { top: 50, right: 50, bottom: 50, left: 50 };
+  map.fitBounds(bounds, padding);
+}
+
+// Load Google Maps API
+window.initMap = initMap;
+
+// ─── GALLERY MODAL ───
+const galleryImages = {
+  'Talwarbaazi': [
+    'gallery-asset/Talwarbaazi/TB 1.jpeg',
+    'gallery-asset/Talwarbaazi/TB 2.jpeg',
+    'gallery-asset/Talwarbaazi/TB 3.jpeg',
+    'gallery-asset/Talwarbaazi/TB 4.jpeg',
+    'gallery-asset/Talwarbaazi/TB 5.jpeg',
+    'gallery-asset/Talwarbaazi/TB 6.jpeg',
+    'gallery-asset/Talwarbaazi/TB 7.jpeg',
+    'gallery-asset/Talwarbaazi/TB 8.jpeg',
+    'gallery-asset/Talwarbaazi/TB 9.jpeg',
+    'gallery-asset/Talwarbaazi/TB 10.jpeg',
+    'gallery-asset/Talwarbaazi/TB 11.jpeg',
+    'gallery-asset/Talwarbaazi/TB 12.jpeg',
+    'gallery-asset/Talwarbaazi/TB 13.jpeg'
+  ],
+  'Dandpatta': [
+    'gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.19.10 PM.jpeg',
+    'gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.19.11 PM.jpeg',
+    'gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.19.15 PM.jpeg',
+    'gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.19.19 PM.jpeg',
+    'gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.24.54 PM.jpeg'
+  ],
+  'Bhala': [
+    'gallery-asset/Bhala/WhatsApp Image 2026-03-18 at 9.19.07 PM.jpeg',
+    'gallery-asset/Bhala/WhatsApp Image 2026-03-18 at 9.19.18 PM.jpeg',
+    'gallery-asset/Bhala/WhatsApp Image 2026-03-18 at 9.24.57 PM.jpeg',
+    'gallery-asset/Bhala/WhatsApp Image 2026-03-18 at 9.31.37 PM.jpeg'
+  ],
+  'Bana': [
+    'gallery-asset/Bana/Bana 1.jpeg',
+    'gallery-asset/Bana/Bana 2.jpeg',
+    'gallery-asset/Bana/WhatsApp Image 2026-03-18 at 9.24.45 PM.jpeg',
+    'gallery-asset/Bana/WhatsApp Image 2026-03-18 at 9.31.36 PM.jpeg'
+  ],
+  'Lathi-Kathi': [
+    'gallery-asset/Lathi-Kathi/L-K.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 2.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 3.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 4.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 5.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 6.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 7.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 8.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 9.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 10.jpeg',
+    'gallery-asset/Lathi-Kathi/L-K 11.jpeg'
+  ],
+  'Yoga': [
+    'gallery-asset/Yoga/Y1.jpeg',
+    'gallery-asset/Yoga/Y2.jpeg',
+    'gallery-asset/Yoga/Y3.jpeg',
+    'gallery-asset/Yoga/Y4.jpeg',
+    'gallery-asset/Yoga/Y5.jpeg',
+    'gallery-asset/Yoga/Y6.jpeg',
+    'gallery-asset/Yoga/WhatsApp Image 2026-03-18 at 9.19.06 PM.jpeg',
+    'gallery-asset/Yoga/WhatsApp Image 2026-03-18 at 9.19.16 PM.jpeg',
+    'gallery-asset/Yoga/WhatsApp Image 2026-03-18 at 9.19.19 PM.jpeg'
+  ]
+};
+
+function openGalleryModal(discipline) {
+  const modal = document.getElementById('galleryModal');
+  const title = document.getElementById('galleryModalTitle');
+  const grid = document.getElementById('galleryModalGrid');
+  
+  title.textContent = discipline + ' Gallery';
+  grid.innerHTML = '';
+  
+  const images = galleryImages[discipline] || [];
+  images.forEach(imgSrc => {
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = discipline;
+    img.className = 'gallery-modal-img';
+    img.onclick = () => window.open(imgSrc, '_blank');
+    grid.appendChild(img);
+  });
+  
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal() {
+  const modal = document.getElementById('galleryModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('galleryModal');
+  if (event.target === modal) {
+    closeGalleryModal();
+  }
+};
+
+</script>
+
+<!-- Google Maps JavaScript API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxDgQ3cr0Jy0z_xD1_foVZqk3ho1cTQ4I&callback=initMap" async defer></script>
+
+</div>
+<!-- End Main Content -->
+
+<!-- ════════════ PRELOADER SCRIPT ════════════ -->
+<script>
+// Preloader / Intro Video Handler
+const preloader = document.getElementById('preloader');
+const introVideo = document.getElementById('intro-video');
+const body = document.body;
+
+// When video ends, hide preloader and show main content
+introVideo.addEventListener('ended', function() {
+  preloader.classList.add('hidden');
+  body.classList.remove('loading');
+});
+
+// Fallback: If video fails to load or takes too long, show content after 10 seconds
+setTimeout(function() {
+  if (!preloader.classList.contains('hidden')) {
+    preloader.classList.add('hidden');
+    body.classList.remove('loading');
+  }
+}, 10000);
+
+// Optional: Allow users to skip by clicking anywhere on the video
+introVideo.addEventListener('click', function() {
+  preloader.classList.add('hidden');
+  body.classList.remove('loading');
+});
+</script>
+
+</body>
+</html>
