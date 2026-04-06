@@ -705,6 +705,81 @@
   .w-card-info .t { font-weight: 700; color: var(--gold); font-size: 0.95rem; }
   .w-card-info .d { font-size: 0.8rem; color: rgba(245,237,216,0.55); margin-top: 0.2rem; }
 
+  /* ─── EVENTS ─── */
+  .events-section {
+    background: linear-gradient(180deg, #0A1A0A 0%, #071407 50%, #0A1A0A 100%);
+    position: relative;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .event-card {
+    background: linear-gradient(135deg, rgba(26,58,26,0.5), rgba(13,26,13,0.7));
+    border: 1px solid rgba(200,153,26,0.2);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.35s;
+    transform-origin: left;
+  }
+
+  .event-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(200,153,26,0.5);
+    box-shadow: 0 8px 30px rgba(200,153,26,0.2);
+  }
+
+  .event-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .event-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(255,107,26,0.4));
+  }
+
+  .event-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .event-title-marathi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.9rem;
+    color: var(--saffron);
+    margin-bottom: 1rem;
+  }
+
+  .event-desc {
+    font-size: 0.88rem;
+    color: rgba(245,237,216,0.7);
+    line-height: 1.8;
+  }
+
   /* ─── JOIN FORM ─── */
   .join-section {
     background: linear-gradient(180deg, #071407 0%, var(--dark) 100%);
@@ -846,63 +921,121 @@
     box-shadow: 0 8px 30px rgba(255,107,26,0.4);
   }
 
-  /* ─── GALLERY ─── */
-  .gallery { background: linear-gradient(180deg, var(--dark) 0%, #0A1A0A 100%); }
+  /* ─── ACHIEVEMENTS ─── */
+  .achievements { background: linear-gradient(180deg, var(--dark) 0%, #0A1A0A 100%); }
 
-  .gallery-mosaic {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 220px);
-    gap: 0.8rem;
+  .achievement-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
   }
 
-  .gallery-cell {
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
+  .tab-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.8rem 2rem;
     background: rgba(26,58,26,0.4);
-    border: 1px solid rgba(200,153,26,0.1);
+    border: 1px solid rgba(200,153,26,0.2);
+    border-radius: 4px;
+    color: var(--cream);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .tab-btn:hover {
+    background: rgba(200,153,26,0.1);
+    border-color: var(--gold);
+  }
+
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--saffron), var(--gold-dark));
+    border-color: var(--gold);
+    color: white;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .achievement-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(26,58,26,0.6) 0%, rgba(13,26,13,0.8) 100%);
+    border: 1px solid rgba(200,153,26,0.18);
+    border-radius: 6px;
+    overflow: hidden;
+    height: 280px;
     cursor: pointer;
     transition: all 0.35s;
   }
 
-  .gallery-cell:hover { border-color: rgba(200,153,26,0.4); }
+  .achievement-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(200,153,26,0.4);
+  }
 
-  .gallery-cell.span2 { grid-column: span 2; }
-  .gallery-cell.span-row { grid-row: span 2; }
+  .achievement-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-  .gallery-placeholder {
+  .achievement-placeholder {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
-    color: rgba(200,153,26,0.2);
-    gap: 0.5rem;
+    gap: 1rem;
+    color: rgba(200,153,26,0.3);
   }
 
-  .gallery-placeholder span {
-    font-size: 0.75rem;
-    color: rgba(245,237,216,0.2);
+  .achievement-placeholder p {
     font-family: 'Cinzel', serif;
-    letter-spacing: 0.1em;
+    font-size: 1rem;
+    color: var(--gold);
+    margin: 0;
   }
 
-  .gallery-overlay {
+  .achievement-placeholder small {
+    font-size: 0.75rem;
+    color: rgba(245,237,216,0.4);
+  }
+
+  .achievement-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(13,26,13,0.8) 0%, transparent 60%);
+    background: linear-gradient(0deg, rgba(13,26,13,0.9) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.3s;
     display: flex;
     align-items: flex-end;
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
-  .gallery-cell:hover .gallery-overlay { opacity: 1; }
-  .gallery-caption { font-size: 0.8rem; color: var(--gold); font-family: 'Cinzel', serif; }
+  .achievement-card:hover .achievement-overlay {
+    opacity: 1;
+  }
+
+  .achievement-caption {
+    font-size: 0.9rem;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+  }
 
   /* ─── GALLERY MODAL ─── */
   .gallery-modal {
@@ -1198,12 +1331,13 @@
 
     .training-grid { grid-template-columns: 1fr; }
 
-    .gallery-mosaic {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto;
+    .events-grid {
+      grid-template-columns: 1fr;
     }
 
-    .gallery-cell.span2, .gallery-cell.span-row { grid-column: auto; grid-row: auto; }
+    .achievement-grid {
+      grid-template-columns: 1fr 1fr;
+    }
 
     .stats-inner { grid-template-columns: repeat(2, 1fr); }
 
@@ -1222,7 +1356,7 @@
   @media (max-width: 480px) {
     .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
     .stat-num { font-size: 1.8rem; }
-    .gallery-mosaic { grid-template-columns: 1fr; }
+    .achievement-grid { grid-template-columns: 1fr; }
     .hero-actions { flex-direction: column; align-items: center; }
     .social-links { flex-wrap: wrap; }
   }
@@ -1237,6 +1371,167 @@
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── SUPPORT US BUTTON ─── */
+  .support-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1500;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(255,107,26,0.5);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .support-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(255,107,26,0.7);
+  }
+
+  .support-btn-icon {
+    font-size: 1.2rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(255,107,26,0.5); }
+    50% { box-shadow: 0 8px 40px rgba(255,107,26,0.8); }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+  }
+
+  /* ─── SUPPORT POPUP ─── */
+  .support-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13,26,13,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .support-popup.active {
+    display: flex;
+  }
+
+  .support-popup-content {
+    background: linear-gradient(135deg, rgba(26,58,26,0.9), rgba(13,26,13,0.95));
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 3rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: popupSlideIn 0.4s ease-out;
+    box-shadow: 0 20px 60px rgba(200,153,26,0.3);
+  }
+
+  @keyframes popupSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .support-popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.3s;
+    line-height: 1;
+  }
+
+  .support-popup-close:hover {
+    color: var(--saffron);
+    transform: rotate(90deg);
+  }
+
+  .support-popup-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .support-popup-subtitle {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 1rem;
+    color: var(--saffron);
+    margin-bottom: 2rem;
+  }
+
+  .support-qr-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+
+  .support-qr-container img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+  }
+
+  .support-popup-message {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(245,237,216,0.8);
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .support-btn {
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .support-popup-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .support-popup-title {
+      font-size: 1.4rem;
+    }
+  }
 
   /* ─── ACTIVE NAV HIGHLIGHT ─── */
   .nav-links a.active { color: var(--gold); }
@@ -1272,7 +1567,8 @@
       <li><a href="#about">About</a></li>
       <li><a href="#training">Training</a></li>
       <li><a href="#women">Women</a></li>
-      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#join" class="nav-cta">Join Now</a></li>
     </ul>
@@ -1336,41 +1632,94 @@
         </div>
       </div>
       <div class="about-content reveal reveal-delay-1">
-        <span class="section-eyebrow" data-key="about-eyebrow">Our Story</span>
-        <h2 data-key="about-title">Shivshakti Gurukulam</h2>
-        <p class="sub" data-key="about-sub">शिवशक्ती गुरुकुलम् — प्राचीन परंपरा, आधुनिक दृष्टी</p>
-        <p data-key="about-p1">Shivshakti Gurukulam is a training centre dedicated to preserving ancient Indian martial arts, Akhada culture, and holistic physical-mental development.</p>
-        <p data-key="about-p2">Drawing inspiration from the valour of Chhatrapati Shivaji Maharaj, we instil courage, discipline, and patriotism in the youth — especially empowering women to reclaim their strength.</p>
-        <div class="about-pillars">
-          <div class="pillar">
-            <span class="pillar-icon">⚔️</span>
-            <div class="pillar-text">
-              <div class="t" data-key="p1t">Martial Arts</div>
-              <div class="d" data-key="p1d">Ancient Indian battle traditions</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <span class="pillar-icon">🧘</span>
-            <div class="pillar-text">
-              <div class="t" data-key="p2t">Yoga & Wellness</div>
-              <div class="d" data-key="p2d">Mind-body balance</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <span class="pillar-icon">🛡️</span>
-            <div class="pillar-text">
-              <div class="t" data-key="p3t">Self Defence</div>
-              <div class="d" data-key="p3d">Practical protection skills</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <span class="pillar-icon">🏔️</span>
-            <div class="pillar-text">
-              <div class="t" data-key="p4t">Trekking & Adventure</div>
-              <div class="d" data-key="p4d">Outdoor courage building</div>
-            </div>
-          </div>
-        </div>
+        <span class="section-eyebrow">Our Story</span>
+        <h2>Shivshakti Gurukulam</h2>
+        <p class="sub" style="font-style: italic; font-size: 1.05rem; margin-bottom: 1.5rem;">"Shastrena Rakshite Rashtr, Rashtr Chinta Pravartate"</p>
+        <p style="font-size: 0.9rem; margin-bottom: 1.2rem; font-style: italic; color: rgba(245,237,216,0.65);">
+          (Only in a nation protected by arms can knowledge and wisdom flourish)
+        </p>
+        
+        <p style="margin-bottom: 1rem;">
+          Peace cannot be established without strength and preparedness—this timeless truth is reflected in the strategies of Lord Krishna in the Mahabharata, the Arthashastra of Chanakya, and the military brilliance of Chhatrapati Shivaji Maharaj.
+        </p>
+        
+        <p style="margin-bottom: 1.5rem;">
+          India has been the birthplace of ancient martial traditions since time immemorial. Over time, these martial arts evolved across regions, adapting to local cultures while preserving their original essence.
+        </p>
+
+        <h3 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+          🛡️ Our Legacy
+        </h3>
+        <p style="margin-bottom: 1rem;">
+          Shivshakti Gurukulam, since 1870, has been dedicated to preserving and promoting India's ancient martial arts and heritage.
+        </p>
+        
+        <p style="margin-bottom: 1.5rem; font-size: 0.92rem;">
+          Our key activities include:<br>
+          • Conducting martial arts training camps across Maharashtra and India<br>
+          • Organizing exhibitions of historical weapons and coins in schools and colleges<br>
+          • Creating awareness about Indian history and heritage<br>
+          • Preserving traditional combat techniques
+        </p>
+
+        <h3 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+          🎯 Our Mission
+        </h3>
+        <p style="margin-bottom: 1.5rem; font-size: 0.92rem;">
+          Our mission is to empower the youth by:<br>
+          • Building physical and mental strength<br>
+          • Providing self-defense training<br>
+          • Instilling awareness of Indian culture and history<br>
+          • Developing disciplined, courageous, and patriotic individuals
+        </p>
+
+        <h3 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+          ⚔️ Our Initiatives
+        </h3>
+        <p style="margin-bottom: 1rem; font-size: 0.92rem;">
+          We organize various impactful and educational programs:<br>
+          🏰 Fort Exploration Campaigns<br>
+          ⚔️ Battle Heritage Studies<br>
+          🚶‍♂️ Nagpur Heritage Walk<br>
+          🛡️ Martial Arts Training Centers
+        </p>
+        
+        <p style="margin-bottom: 1.5rem; font-size: 0.92rem;">
+          We also work in areas like:<br>
+          Spiritual Development • Environmental Awareness • De-addiction Campaigns • Entrepreneurship • Social Responsibility • Women Empowerment • Caring for Historical Statues
+        </p>
+
+        <h3 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+          🇮🇳 Our Philosophy
+        </h3>
+        <p style="margin-bottom: 1rem;">
+          History teaches us that when a society becomes disarmed, it risks losing its culture and identity. Knowledge without strength is incomplete, and strength without knowledge is dangerous.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+          We believe today's youth must understand the true meaning of peace and the strength required to protect it.
+        </p>
+
+        <h3 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+          🏋️‍♂️ Founder – Vastad Shri Hitesh Vasantrao Daf
+        </h3>
+        <p style="margin-bottom: 1rem; font-size: 0.92rem;">
+          🏆 World Record (2022): Continuous dual-sword spinning in 5 styles for 9 minutes 32 seconds (552 seconds)<br>
+          🌍 Recognized by International Book of Records<br>
+          ⭐ Featured in India Greatest Talent 2022<br>
+          🥇 Recipient of Shiv Chhatrapati Maharashtra गौरव Award 2024<br>
+          👨‍🎓 Trained 20,000+ students<br>
+          🗡️ Collector of historical weapons
+        </p>
+
+        <h3 style="font-family: 'Cinzel', serif; color: var(--saffron); font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+          🔥 Our Vision
+        </h3>
+        <p style="font-style: italic; font-size: 1rem; color: var(--gold-light);">
+          "Internal national security can only be achieved through self-defense."
+        </p>
+        <p style="margin-top: 1rem;">
+          Shivshakti Gurukulam aims to build a generation that is strong, aware, and culturally rooted—ready to protect and preserve the nation's heritage.
+        </p>
       </div>
     </div>
   </div>
@@ -1502,56 +1851,167 @@
   </div>
 </section>
 
-<!-- ════════════ GALLERY ════════════ -->
-<section class="gallery section-pad" id="gallery">
+<!-- ════════════ EVENTS ════════════ -->
+<section class="events-section section-pad" id="events">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-eyebrow" data-key="gallery-eyebrow">Our Journey</span>
-      <h2 class="section-title" data-key="gallery-title">Gallery</h2>
-      <p class="section-title-marathi">गॅलरी — कार्यक्रम, स्पर्धा, प्रशिक्षण</p>
+      <span class="section-eyebrow">Our Activities</span>
+      <h2 class="section-title">Events</h2>
+      <p class="section-title-marathi">कार्यक्रम — आमचे उपक्रम</p>
       <div class="section-line"></div>
     </div>
-    <div class="gallery-mosaic reveal">
-      <!-- Talwarbaazi - spans 2 columns -->
-      <div class="gallery-cell span2" onclick="openGalleryModal('Talwarbaazi')">
-        <img src="gallery-asset/Talwarbaazi/TB 1.jpeg" alt="Talwarbaazi" style="width:100%; height:100%; object-fit:cover;">
-        <div class="gallery-overlay"><span class="gallery-caption">⚔️ Talwarbaazi — Sword Training</span></div>
+
+    <div class="events-grid">
+      <!-- Weapon Exhibition -->
+      <div class="event-card reveal">
+        <span class="event-icon">⚔️</span>
+        <h3 class="event-title">Weapon Exhibition</h3>
+        <p class="event-title-marathi">शस्त्र प्रदर्शन</p>
+        <p class="event-desc">Showcasing traditional Indian weapons and martial arts equipment. Experience the legacy of ancient warfare through authentic displays and expert demonstrations.</p>
       </div>
-      
-      <!-- Dandpatta -->
-      <div class="gallery-cell" onclick="openGalleryModal('Dandpatta')">
-        <img src="gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.19.10 PM.jpeg" alt="Dandpatta" style="width:100%; height:100%; object-fit:cover;">
-        <div class="gallery-overlay"><span class="gallery-caption">🪃 Dandpatta — Gauntlet Sword</span></div>
+
+      <!-- Demonstration -->
+      <div class="event-card reveal reveal-delay-1">
+        <span class="event-icon">🥋</span>
+        <h3 class="event-title">Demonstration</h3>
+        <p class="event-title-marathi">प्रात्यक्षिक</p>
+        <p class="event-desc">Live martial arts performances showcasing Talwarbaazi, Dandpatta, and other traditional combat forms. Witness the power and grace of ancient Indian martial arts.</p>
       </div>
-      
-      <!-- Bhala -->
-      <div class="gallery-cell" onclick="openGalleryModal('Bhala')">
-        <img src="gallery-asset/Bhala/WhatsApp Image 2026-03-18 at 9.19.07 PM.jpeg" alt="Bhala" style="width:100%; height:100%; object-fit:cover;">
-        <div class="gallery-overlay"><span class="gallery-caption">🏹 Bhala — Spear Training</span></div>
+
+      <!-- Trekking -->
+      <div class="event-card reveal reveal-delay-2">
+        <span class="event-icon">🏔️</span>
+        <h3 class="event-title">Trekking</h3>
+        <p class="event-title-marathi">गिर्यारोहण</p>
+        <p class="event-desc">Organized expeditions to historic Maratha forts in the Sahyadri ranges. Connect with history while building physical endurance and team spirit.</p>
       </div>
-      
-      <!-- Bana -->
-      <div class="gallery-cell" onclick="openGalleryModal('Bana')">
-        <img src="gallery-asset/Bana/Bana 1.jpeg" alt="Bana" style="width:100%; height:100%; object-fit:cover;">
-        <div class="gallery-overlay"><span class="gallery-caption">🏹 Bana — Archery</span></div>
+
+      <!-- Heritage Walk -->
+      <div class="event-card reveal">
+        <span class="event-icon">🏛️</span>
+        <h3 class="event-title">Heritage Walk</h3>
+        <p class="event-title-marathi">वारसा पदयात्रा</p>
+        <p class="event-desc">Guided tours through historical sites and monuments. Learn about Maratha history, culture, and the warrior legacy that inspires our training.</p>
       </div>
-      
-      <!-- Lathi-Kathi -->
-      <div class="gallery-cell" onclick="openGalleryModal('Lathi-Kathi')">
-        <img src="gallery-asset/Lathi-Kathi/L-K.jpeg" alt="Lathi-Kathi" style="width:100%; height:100%; object-fit:cover;">
-        <div class="gallery-overlay"><span class="gallery-caption">🪵 Lathi-Kathi — Staff Combat</span></div>
+
+      <!-- Seminars -->
+      <div class="event-card reveal reveal-delay-1">
+        <span class="event-icon">📚</span>
+        <h3 class="event-title">Seminars</h3>
+        <p class="event-title-marathi">परिसंवाद</p>
+        <p class="event-desc">Educational sessions on martial arts philosophy, Indian history, self-defence techniques, and warrior mindset. Learn from experts and master trainers.</p>
       </div>
-      
-      <!-- Yoga -->
-      <div class="gallery-cell" onclick="openGalleryModal('Yoga')">
-        <img src="gallery-asset/Yoga/Y1.jpeg" alt="Yoga" style="width:100%; height:100%; object-fit:cover;">
-        <div class="gallery-overlay"><span class="gallery-caption">🧘 Yoga — Mind & Body</span></div>
+
+      <!-- Placeholder for future event -->
+      <div class="event-card reveal reveal-delay-2">
+        <span class="event-icon">🎯</span>
+        <h3 class="event-title">Competitions</h3>
+        <p class="event-title-marathi">स्पर्धा</p>
+        <p class="event-desc">Annual martial arts competitions and tournaments. Test your skills, compete with fellow warriors, and earn recognition for your dedication.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ GALLERY MODAL ════════════ -->
+<!-- ════════════ ACHIEVEMENTS ════════════ -->
+<section class="achievements section-pad" id="achievements">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Our Pride</span>
+      <h2 class="section-title">Achievements</h2>
+      <p class="section-title-marathi">उपलब्धी — आमचा अभिमान</p>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="achievement-tabs reveal">
+      <button class="tab-btn active" onclick="switchTab('newspaper')">📰 Newspaper</button>
+      <button class="tab-btn" onclick="switchTab('photos')">📸 Photos</button>
+    </div>
+
+    <!-- Newspaper Tab Content -->
+    <div id="newspaper-tab" class="tab-content active">
+      <div class="achievement-grid reveal">
+        <div class="achievement-card">
+          <div class="achievement-placeholder">
+            <span style="font-size: 3rem;">📰</span>
+            <p>Newspaper Coverage</p>
+            <small>Coming Soon</small>
+          </div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-placeholder">
+            <span style="font-size: 3rem;">📰</span>
+            <p>Media Features</p>
+            <small>Coming Soon</small>
+          </div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-placeholder">
+            <span style="font-size: 3rem;">📰</span>
+            <p>Press Releases</p>
+            <small>Coming Soon</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photos Tab Content -->
+    <div id="photos-tab" class="tab-content">
+      <div class="achievement-grid reveal">
+        <!-- Talwarbaazi -->
+        <div class="achievement-card" onclick="openGalleryModal('Talwarbaazi')">
+          <img src="gallery-asset/Talwarbaazi/TB 1.jpeg" alt="Talwarbaazi" style="width:100%; height:100%; object-fit:cover;">
+          <div class="achievement-overlay">
+            <span class="achievement-caption">⚔️ Talwarbaazi</span>
+          </div>
+        </div>
+        
+        <!-- Dandpatta -->
+        <div class="achievement-card" onclick="openGalleryModal('Dandpatta')">
+          <img src="gallery-asset/Dandpatta/WhatsApp Image 2026-03-18 at 9.19.10 PM.jpeg" alt="Dandpatta" style="width:100%; height:100%; object-fit:cover;">
+          <div class="achievement-overlay">
+            <span class="achievement-caption">🪃 Dandpatta</span>
+          </div>
+        </div>
+        
+        <!-- Bhala -->
+        <div class="achievement-card" onclick="openGalleryModal('Bhala')">
+          <img src="gallery-asset/Bhala/WhatsApp Image 2026-03-18 at 9.19.07 PM.jpeg" alt="Bhala" style="width:100%; height:100%; object-fit:cover;">
+          <div class="achievement-overlay">
+            <span class="achievement-caption">🏹 Bhala</span>
+          </div>
+        </div>
+        
+        <!-- Bana -->
+        <div class="achievement-card" onclick="openGalleryModal('Bana')">
+          <img src="gallery-asset/Bana/Bana 1.jpeg" alt="Bana" style="width:100%; height:100%; object-fit:cover;">
+          <div class="achievement-overlay">
+            <span class="achievement-caption">🏹 Bana</span>
+          </div>
+        </div>
+        
+        <!-- Lathi-Kathi -->
+        <div class="achievement-card" onclick="openGalleryModal('Lathi-Kathi')">
+          <img src="gallery-asset/Lathi-Kathi/L-K.jpeg" alt="Lathi-Kathi" style="width:100%; height:100%; object-fit:cover;">
+          <div class="achievement-overlay">
+            <span class="achievement-caption">🪵 Lathi-Kathi</span>
+          </div>
+        </div>
+        
+        <!-- Yoga -->
+        <div class="achievement-card" onclick="openGalleryModal('Yoga')">
+          <img src="gallery-asset/Yoga/Y1.jpeg" alt="Yoga" style="width:100%; height:100%; object-fit:cover;">
+          <div class="achievement-overlay">
+            <span class="achievement-caption">🧘 Yoga</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GALLERY MODAL (for Photos) ════════════ -->
 <div id="galleryModal" class="gallery-modal">
   <div class="gallery-modal-content">
     <span class="gallery-modal-close" onclick="closeGalleryModal()">&times;</span>
@@ -1739,7 +2199,7 @@
         <ul>
           <li><a href="#about" data-key="fc2-1">About Us</a></li>
           <li><a href="#" data-key="fc2-2">Our Team</a></li>
-          <li><a href="#" data-key="fc2-3">Achievements</a></li>
+          <li><a href="#achievements" data-key="fc2-3">Achievements</a></li>
           <li><a href="#" data-key="fc2-4">Blog</a></li>
           <li><a href="#contact" data-key="fc2-5">Contact</a></li>
         </ul>
@@ -2058,6 +2518,26 @@ const galleryImages = {
   ]
 };
 
+// ─── TAB SWITCHING FOR ACHIEVEMENTS ───
+function switchTab(tabName) {
+  // Hide all tab contents
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  
+  // Remove active class from all buttons
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Show selected tab content
+  document.getElementById(tabName + '-tab').classList.add('active');
+  
+  // Add active class to clicked button
+  event.target.classList.add('active');
+}
+
+// ─── GALLERY MODAL FUNCTIONS ───
 function openGalleryModal(discipline) {
   const modal = document.getElementById('galleryModal');
   const title = document.getElementById('galleryModalTitle');
@@ -2094,6 +2574,29 @@ window.onclick = function(event) {
   }
 };
 
+// ─── SUPPORT POPUP FUNCTIONS ───
+function openSupportPopup() {
+  const popup = document.getElementById('supportPopup');
+  popup.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSupportPopup(event) {
+  // Close if clicking outside content or on close button
+  if (!event || event.target.id === 'supportPopup' || event.target.classList.contains('support-popup-close')) {
+    const popup = document.getElementById('supportPopup');
+    popup.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+// Close popup with Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeSupportPopup();
+  }
+});
+
 </script>
 
 <!-- Google Maps JavaScript API -->
@@ -2101,6 +2604,33 @@ window.onclick = function(event) {
 
 </div>
 <!-- End Main Content -->
+
+<!-- ════════════ SUPPORT US BUTTON ════════════ -->
+<button class="support-btn" onclick="openSupportPopup()">
+  <span class="support-btn-icon">❤️</span>
+  Support Us
+</button>
+
+<!-- ════════════ SUPPORT POPUP ════════════ -->
+<div id="supportPopup" class="support-popup" onclick="closeSupportPopup(event)">
+  <div class="support-popup-content" onclick="event.stopPropagation()">
+    <span class="support-popup-close" onclick="closeSupportPopup()">&times;</span>
+    
+    <h2 class="support-popup-title">
+      <span>🙏</span> Thank You for Supporting Us
+    </h2>
+    <p class="support-popup-subtitle">आपल्या समर्थनाबद्दल धन्यवाद</p>
+    
+    <div class="support-qr-container">
+      <img src="support-qr.svg" alt="Support QR Code" id="supportQRImage" onerror="this.onerror=null; this.src='support-qr.jpg';">
+    </div>
+    
+    <p class="support-popup-message">
+      Scan the QR code to support Shivshakti Gurukulam Foundation.<br>
+      Your contribution helps us preserve ancient Indian martial arts and empower the next generation of warriors.
+    </p>
+  </div>
+</div>
 
 <!-- ════════════ PRELOADER SCRIPT ════════════ -->
 <script>

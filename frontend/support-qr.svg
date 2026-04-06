@@ -1,0 +1,14 @@
+<svg width="300" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="300" height="350" fill="#1a1a1a"/>
+  
+  <!-- QR Code Placeholder -->
+  <rect x="25" y="25" width="250" height="250" fill="#ffffff" rx="8"/>
+  <text x="150" y="140" font-family="Arial, sans-serif" font-size="24" fill="#333" text-anchor="middle" font-weight="bold">QR CODE</text>
+  <text x="150" y="170" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">Scan to Pay</text>
+  
+  <!-- UPI ID -->
+  <rect x="25" y="285" width="250" height="50" fill="#2a2a2a" rx="4"/>
+  <text x="150" y="310" font-family="monospace" font-size="14" fill="#C8991A" text-anchor="middle" font-weight="bold">UPI ID:</text>
+  <text x="150" y="330" font-family="monospace" font-size="16" fill="#E8B93A" text-anchor="middle" font-weight="bold">9175659227@ybl</text>
+</svg>
